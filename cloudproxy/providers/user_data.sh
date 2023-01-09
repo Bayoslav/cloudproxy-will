@@ -11,9 +11,8 @@ sudo ufw default deny incoming
 sudo ufw allow 22/tcp
 sudo ufw allow 8899/tcp
 sudo ufw --force enable
-eval "$(ssh-agent -s)"
-ssh-add /home/ubuntu/.ssh/id_ed25519
-ssh -o StrictHostKeyChecking=no root@ip
+eval "$(ssh-agent -s)" && ssh-add /home/ubuntu/.ssh/id_ed25519
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh -T git@github.com
 git config --global --add safe.directory /home/ubuntu/Willhaben_v2
 source /home/ubuntu/venv/bin/activate
