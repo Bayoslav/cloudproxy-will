@@ -20,5 +20,4 @@ source /home/ubuntu/venv/bin/activate
 cd /home/ubuntu/Willhaben_v2/
 git pull origin celery
 pip install -r requirements.txt
-celery -A celery_handle_url worker --loglevel=INFO -n worker1 -Q worker1 --concurrency=1 --prefetch-multiplier=1
-
+python3 -m celery -A celery_handle_url worker --loglevel=INFO -n $(hostname -i) -Q $(hostname -i) --concurrency=1 --prefetch-multiplier=1
