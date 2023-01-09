@@ -12,7 +12,6 @@ sudo ufw allow 22/tcp
 sudo ufw allow 8899/tcp
 sudo ufw --force enable
 sudo git config --global --add safe.directory /home/ubuntu/Willhaben_v2
-echo "added git global safedir"
 eval $(ssh-agent -s) && ssh-add /home/ubuntu/.ssh/id_ed25519
 sudo git config --system http.sslVerify false
 sudo git config --system user.email "gaming4ever93@gmail.com"
