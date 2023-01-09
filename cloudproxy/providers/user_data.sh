@@ -19,5 +19,6 @@ git config --global --add safe.directory /home/ubuntu/Willhaben_v2
 source /home/ubuntu/venv/bin/activate
 cd /home/ubuntu/Willhaben_v2/
 git pull origin celery
+pip install -r requirements.txt
 celery -A celery_handle_url worker --loglevel=INFO -n worker1 -Q worker1 --concurrency=1 --prefetch-multiplier=1
 
