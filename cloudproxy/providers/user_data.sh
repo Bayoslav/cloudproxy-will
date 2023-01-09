@@ -24,6 +24,6 @@ cd /home/ubuntu/
 mkdir kek
 cd kek
 git clone --branch celery git@github.com:Bayoslav/Willhaben_v2.git
-cd willhaben_v2
+cd Willhaben_v2
 pip install -r requirements.txt
 python3 -m celery -A celery_handle_url worker --loglevel=INFO -n $(hostname -i) -Q $(hostname -i) --concurrency=1 --prefetch-multiplier=1 --logfile=celery.log
