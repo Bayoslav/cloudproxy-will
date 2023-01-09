@@ -11,11 +11,13 @@ sudo ufw default deny incoming
 sudo ufw allow 22/tcp
 sudo ufw allow 8899/tcp
 sudo ufw --force enable
-screen -S worker
+eval "$(ssh-agent -s)"
+ssh-add /home/ubuntu/.ssh/id_ed25519
 ssh -o StrictHostKeyChecking=no root@ip
 ssh -T git@github.com
-source venv/bin/activate
-cd Willhaben_v2/
+git config --global --add safe.directory /home/ubuntu/Willhaben_v2
+source /home/ubuntu/venv/bin/activate
+cd /home/ubuntu/Willhaben_v2/
 git pull origin celery
 celery -A celery_handle_url worker --loglevel=INFO -n worker1 -Q worker1 --concurrency=1 --prefetch-multiplier=1
 
