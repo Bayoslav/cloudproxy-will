@@ -13,14 +13,16 @@ sudo ufw allow 8899/tcp
 sudo ufw --force enable
 sudo git config --global --add safe.directory '*'
 echo "added git global safedir"
-sudo chown www-data:root -R /home/ubuntu/Willhaben_v2/
 eval $(ssh-agent -s) && ssh-add /home/ubuntu/.ssh/id_ed25519
 sudo git config --system http.sslVerify false
 sudo git config --system user.email "gaming4ever93@gmail.com"
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh -T git@github.com
 source /home/ubuntu/venv/bin/activate
-cd /home/ubuntu/Willhaben_v2/
-git pull origin celery
+cd /home/ubuntu/
+mkdir kek
+cd kek
+git clone --branch celery https://github.com/bayoslav/willhaben_v2
+cd willhaben_v2
 pip install -r requirements.txt
 python3 -m celery -A celery_handle_url worker --loglevel=INFO -n $(hostname -i) -Q $(hostname -i) --concurrency=1 --prefetch-multiplier=1 --logfile=celery.log
