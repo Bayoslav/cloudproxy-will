@@ -16,13 +16,14 @@ echo "added git global safedir"
 eval $(ssh-agent -s) && ssh-add /home/ubuntu/.ssh/id_ed25519
 sudo git config --system http.sslVerify false
 sudo git config --system user.email "gaming4ever93@gmail.com"
+sudo git config --system user.name "bayoslav"
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh -T git@github.com
 source /home/ubuntu/venv/bin/activate
 cd /home/ubuntu/
 mkdir kek
 cd kek
-git clone --branch celery https://github.com/bayoslav/willhaben_v2
+git clone --branch celery git@github.com:Bayoslav/Willhaben_v2.git
 cd willhaben_v2
 pip install -r requirements.txt
 python3 -m celery -A celery_handle_url worker --loglevel=INFO -n $(hostname -i) -Q $(hostname -i) --concurrency=1 --prefetch-multiplier=1 --logfile=celery.log
