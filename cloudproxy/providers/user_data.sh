@@ -11,3 +11,9 @@ sudo ufw default deny incoming
 sudo ufw allow 22/tcp
 sudo ufw allow 8899/tcp
 sudo ufw --force enable
+ssh -o StrictHostKeyChecking=no root@ip
+ssh -T git@github.com
+source venv/bin/activate
+cd Willhaben_v2/
+celery -A celery_handle_url worker --loglevel=INFO -n worker1 -Q worker1 --concurrency=1 --prefetch-multiplier=1
+
